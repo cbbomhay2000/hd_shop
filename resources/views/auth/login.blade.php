@@ -1,6 +1,8 @@
 @extends('layouts.app')
+
 @section('content')
-    <div class="vh-100" style="background-image: url('https://images.wallpaperscraft.com/image/single/balloons_background_multi-colored_83498_1920x1080.jpg');">
+    <div class="vh-100"
+        style="background-image: url('https://images.wallpaperscraft.com/image/single/balloons_background_multi-colored_83498_1920x1080.jpg');">
         <div class="container align-items-center">
             <div class="row justify-content-center">
                 <div class="col-md-4">
@@ -14,7 +16,8 @@
                                     <div class="form-outline form-white mb-3">
                                         <input id="email" type="email"
                                             class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                            name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                                            name="email" value="{{ old('email') }}" placeholder="Email" required
+                                            autofocus>
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -42,14 +45,12 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                                 {{ old('remember') ? 'checked' : '' }}>
-
                                             <label class="form-check-label" for="remember">
                                                 Remember Me
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-
                                 <button type="submit" class="btn btn-primary btn-lg btn-outline-light px-5">
                                     Login
                                 </button>
@@ -59,6 +60,7 @@
                                         Forgot Your Password?
                                     </a>
                                 @endif
+
                                 <p class="mb-0">
                                     Don't have an account?
                                     <a href="{{ route('register') }}" class="fw-bold text-decoration-none">Sign Up</a>

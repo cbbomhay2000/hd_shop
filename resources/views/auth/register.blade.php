@@ -22,7 +22,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="mb-3">
                                     <div class="form-outline form-white mb-4">
                                         <input id="email" type="email"
@@ -36,7 +35,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="mb-3">
                                     <div class="form-outline form-white mb-4">
                                         <input id="password" type="password"
@@ -50,16 +48,13 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="mb-3">
-
                                     <div class="form-outline form-white mb-4">
                                         <input id="password-confirm" type="password" class="form-control form-control-lg"
                                             name="password_confirmation" placeholder="Password confirm" required autocomplete="new-password">
                                     </div>
                                 </div>
                                 <hr class="my-4">
-
                                 <button type="submit" class="btn btn-primary btn-lg btn-outline-light px-5">
                                     Register
                                 </button>
