@@ -36,5 +36,9 @@ Route::get('/details', function () {
     return view('product-details');
 })->name('details');
 
+Route::get('/admin/login', function () {
+    return view('admin.login');
+})->name('adminlogin');
+
 
 
