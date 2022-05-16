@@ -1,0 +1,27 @@
+body {
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+}
+.contactinfo ul li a {
+    font-size: 12px;
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+}
+.nav-pills>li>a {
+    border-radius: 4px;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+a {
+    background: transparent;
+    transition: 300ms;
+    text-decoration: none;
+}
+.header_top {
+    height: 40px;
+    background: none repeat scroll 0 0 #F0F0E9;
+  }
