@@ -13,7 +13,7 @@ html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
     overflow-x: hidden;
-    background: url(../images/bg.jpg) no-repeat 0px 0px;
+    background: url(https://images.wallpaperscraft.com/image/single/triangles_background_shape_85559_1920x1080.jpg) no-repeat 0px 0px;
 	background-size:cover;
 }
 body a{
@@ -2365,7 +2365,7 @@ ul.inbox-pagination li {
 .w3layouts-main {
     width: 30%;
     margin:5em auto;
-    background:rgba(171, 119, 157, 0.27);
+    background: rgb(93 135 131 / 92%);
     padding: 42px 35px;
 }
 /*--//header--*/
