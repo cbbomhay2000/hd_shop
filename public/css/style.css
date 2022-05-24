@@ -566,7 +566,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 /*search*/
 .search {
-    width: 20px;
+    width: 170px;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
@@ -574,25 +574,15 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     transition: all .3s ease;
     border: 1px solid #8b5c7e;
     box-shadow: none;
-    background: #8b5c7e url(../images/search-icon.png) no-repeat 10px 8px;
+    background: #5e6878 url(../images/search-icon.png) no-repeat 10px 8px;
     padding: 0 5px 0 30px;
+    margin: 12px 10px 0 40px;;
     color: #fff;
     border-radius: 100px;
     -webkit-border-radius: 100px;
 	cursor:pointer;
 }
-.search:focus {
-    width:180px;
-    border:1px solid #8b5c7e;
-    box-shadow:none;
-    -webkit-transition:all .3s ease;
-    -moz-transition:all .3s ease;
-    -ms-transition:all .3s ease;
-    -o-transition:all .3s ease;
-    transition:all .3s ease;
-    color:#c8c8c8;
-    font-weight: 300;
-}
+
 .todo-search:focus{
     width:100% !important;
 }
@@ -1646,7 +1636,7 @@ ul.bs-glyphicons-list {
 }
 .panel-default>.panel-heading {
     color: #000000 ! important;
-    background-color: #ddede0 ! important;
+    background-color: #aacbe7 ! important;
     border-color: #ddede0 ! important;
     font-size: 20px;
 }
