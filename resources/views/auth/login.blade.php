@@ -68,6 +68,12 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                        <select class="form-control" name="status" id="exampleFormControlSelect1">
+                            <option value="1">active</option>
+                            <option value="2">block</option>
+                            <option value="3">approval</option>
+                          </select>
+                          
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                             name="password" placeholder="New password" required autocomplete="new-password">
 

@@ -5,11 +5,17 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Services\AdminService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticateSessionController extends Controller
 {
+    public function __construct(AdminService $adminService)
+    {
+        $this->adminService = $adminService;        
+    }
+
     public function create()
     {
         return view('admin.auth.login');
@@ -17,10 +23,15 @@ class AuthenticateSessionController extends Controller
 
     public function store(AdminLoginRequest $request)
     {
-        $request->authenticate();
-        $request->session()->regenerate();
+        
+        if ($this->adminService->checkAccountAdmin($request)) {
+            $request->authenticate();
+            $request->session()->regenerate();
+    
+            return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        }
 
-        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        return redirect()->back()->with('failed', 'account not active');
     }
 
     public function destroy(Request $request)
