@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
-<!--/head-->
 
 <body>
     <header id="header">
@@ -33,6 +33,7 @@
                             <ul class="nav nav-pills">
                                 <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href="{{ route('admin.login') }}"><i class="fa fa-desktop"></i> admin</a></li>
                             </ul>
                         </div>
                     </div>
@@ -93,7 +94,22 @@
                                 <li><a href="{{ route('checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a>
                                 </li>
                                 <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                                @guest
+                                    @if (Route::has('login'))
+                                        <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                                    @endif
+                                @else
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-lock"></i> Logout
+                                    </a></li>
+                                    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                @endguest
+
                             </ul>
                         </div>
                     </div>
@@ -121,7 +137,7 @@
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="{{ route('shop') }}">Products</a></li>
-                                        <li><a  href="{{ route('details') }}">Product Details</a></li>
+                                        <li><a href="{{ route('details') }}">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="cart.html">Cart</a></li>
                                         <li><a href="login.html">Login</a></li>
@@ -159,6 +175,8 @@
     <script src="{{ 'js/price-range.js' }}"></script>
     <script src="{{ 'js/jquery.prettyPhoto.js' }}"></script>
     <script src="{{ 'js/main.js' }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 
 </html>

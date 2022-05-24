@@ -40,5 +40,13 @@ Route::get('/admin/login', function () {
     return view('admin.login');
 })->name('adminlogin');
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::namespace('Auth')->group(function () {
+        //login route
+        Route::get('/login', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'create'])->name('login');
+        Route::post('/adminlogin', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'store'])->name('adminlogin');
+        Route::get('/destroy', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'destroy'])->name('destroy');
+    });
+    Route::get('/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
 
-
+});
