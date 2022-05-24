@@ -40,13 +40,21 @@ Route::get('/admin/login', function () {
     return view('admin.login');
 })->name('adminlogin');
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
-    Route::namespace('Auth')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::namespace('Auth')->middleware('guest:admin')->group(function () {
         //login route
         Route::get('/login', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'create'])->name('login');
         Route::post('/adminlogin', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'store'])->name('adminlogin');
-        Route::get('/destroy', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'destroy'])->name('destroy');
     });
-    Route::get('/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
-
+    Route::get('/destroy', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'destroy'])->name('destroy');
+    Route::get('/index', [App\Http\Controllers\Admin\HomeAdminController::class, 'index'])->name('index');
+    Route::resources([
+        'admin-account' => 'App\Http\Controllers\Admin\AdminController',
+    ]);
+    Route::resources([
+        'user-account' => 'App\Http\Controllers\Admin\UserController',
+    ]);
+    Route::resources([
+        'brands' => 'App\Http\Controllers\Admin\BrandController',
+    ]);
 });
