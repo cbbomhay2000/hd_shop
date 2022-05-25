@@ -37,9 +37,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
     Route::get('/destroy', [App\Http\Controllers\Admin\Auth\AuthenticateSessionController::class, 'destroy'])->name('destroy');
     Route::get('/index', [App\Http\Controllers\Admin\HomeAdminController::class, 'index'])->name('index');
+
     Route::resources([
         'admin-account' => 'App\Http\Controllers\Admin\AdminController',
     ]);
+    Route::get('admin-account/{admin_account}', [App\Http\Controllers\Admin\AdminController::class, 'block'])->name('block');
     Route::resources([
         'user-account' => 'App\Http\Controllers\Admin\UserController',
     ]);
@@ -49,4 +51,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resources([
         'category' => 'App\Http\Controllers\Admin\CategoryController',
     ]);
+    Route::resources([
+        'product' => 'App\Http\Controllers\Admin\ProductController',
+    ]);
+    Route::resources([
+        'product_status' => 'App\Http\Controllers\Admin\ProductStatusController',
+    ]);
+
 });
