@@ -65,22 +65,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="{{ Route('admin.index') }}">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>UI Elements</span>
+                <li>
+                    <a href="{{ Route('admin.category.index') }}">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Categories</span>
                     </a>
-                    <ul class="sub">
-						<li><a href="typography.html">Typography</a></li>
-						<li><a href="glyphicon.html">glyphicon</a></li>
-                        <li><a href="grids.html">Grids</a></li>
-                    </ul>
                 </li>
                 <li>
                     <a href="{{ Route('admin.brands.index') }}">
