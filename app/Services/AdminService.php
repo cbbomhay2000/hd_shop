@@ -54,4 +54,16 @@ class AdminService extends BaseService
         
         return true;
     }
+    
+    public function block($admin)
+    {
+        if ($admin['status'] == AdminStatus::ACTIVE)
+        {
+            return $admin->update(['status' => AdminStatus::BLOCK]);
+        }
+        elseif ($admin['status'] == AdminStatus::BLOCK) 
+        {
+            return $admin->update(['status' => AdminStatus::ACTIVE]);
+        }
+    }
 }

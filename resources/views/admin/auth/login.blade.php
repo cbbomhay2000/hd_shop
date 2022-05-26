@@ -29,6 +29,9 @@
     <div class="log-w3">
         <div class="w3layouts-main">
             <h2>Sign In Now</h2>
+
+            @include('layouts.notice')
+
             <form method="POST" action="{{ route('admin.adminlogin') }}">
                 @csrf
                 <input type="email" class="ggg" name="email" placeholder="E-MAIL" required="">

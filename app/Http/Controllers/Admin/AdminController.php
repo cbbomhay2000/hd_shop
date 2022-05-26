@@ -109,5 +109,14 @@ class AdminController extends Controller
 
         return redirect()->back()->with('failed', 'Delete failed');
     }
+
+    public function block(Request $request, Admin $admin_account)
+    {
+        if ($this->adminService->block($admin_account, $request->all())) {
+            return redirect()->back()->with('success', 'Lock up Successfully');
+        }
+
+        return redirect()->back()->with('failed', 'Lock up failed');
+    }
 }
 

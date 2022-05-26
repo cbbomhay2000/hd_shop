@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-class AdminRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     public function authorize()
     {
@@ -13,11 +13,10 @@ class AdminRequest extends FormRequest
 
     public function rules(Request $request)
     {
-        dd('sd');
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:6', 'confirmed'],
         ];
     }
 }

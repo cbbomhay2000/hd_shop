@@ -31,7 +31,7 @@ class AuthenticateSessionController extends Controller
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
         }
 
-        return redirect()->back()->with('failed', 'account not active');
+        return redirect()->back()->with('failed', 'Account password is not correct or Account not active');
     }
 
     public function destroy(Request $request)
