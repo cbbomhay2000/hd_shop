@@ -72,4 +72,13 @@ class UserController extends Controller
 
         return redirect()->back()->with('failed', 'Delete failed');
     }
+
+    public function block(Request $request, User $user_account)
+    {
+        if ($this->userService->block($user_account, $request->all())) {
+            return redirect()->back()->with('success', 'Lock up Successfully');
+        }
+
+        return redirect()->back()->with('failed', 'Lock up failed');
+    }
 }

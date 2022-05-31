@@ -79,20 +79,12 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label for="product_status" class="control-label col-lg-3">Image</label>
-                                            <div class="input-group col-lg-6">
-                                                <span class="input-group-btn">
-                                                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                                    <i class="fa fa-picture-o"></i> Choose
-                                                  </a>
-                                                </span>
-                                                <input id="thumbnail" class="form-control" type="text" name="image">
-                                              </div>
-                                              <img id="holder" style="margin-top:15px;max-height:100px;">
+                                            <div class="col-lg-6">
+                                                <input type="file" name="image">
+                                            </div>
                                         </div>
-                                        
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-6">
                                                 <button class="btn btn-primary" type="submit">Save</button>
@@ -108,6 +100,4 @@
                 </div>
             </div>
     </div>
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-    <script>$('#lfm').filemanager('image');</script>
 @endsection

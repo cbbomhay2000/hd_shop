@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -181,6 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- morris JavaScript -->	
 
 <!-- calendar -->
+    @stack('scripts')
 	<script type="text/javascript" src="{{ asset('js/monthly.js') }}"></script>
 	<script type="text/javascript">
 		$(window).load( function() {

@@ -20,11 +20,15 @@ class ProductService extends BaseService
 
     public function update($product, $request)
     {
+        $request['image'] = $this->createImage($request['image']);
+
         return $product->update($request);
     }
 
     public function create($request)
     {
+        $request['image'] = $this->createImage($request['image']);
+
         return $this->model->create($request);
     }
 

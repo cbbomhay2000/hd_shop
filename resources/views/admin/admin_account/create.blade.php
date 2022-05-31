@@ -1,4 +1,6 @@
 @extends('admin.app')
+@section('title', 'Add New Admin')
+
 @section('content')
     <div id="main-content">
         <section class="wrapper">

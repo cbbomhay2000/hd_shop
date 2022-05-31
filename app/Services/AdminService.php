@@ -45,13 +45,12 @@ class AdminService extends BaseService
     {
         $accountAdmin = $this->model->where('email', $request->email)->first();
         if (!$accountAdmin) {
-            return false;
+            return redirect()->back()->with('failed', 'Gmail does not exist');
         }
 
         if ($accountAdmin->status != AdminStatus::ACTIVE){
-            return false;
+            return redirect()->back()->with('failed', 'Account not active');
         }
-        
         return true;
     }
     

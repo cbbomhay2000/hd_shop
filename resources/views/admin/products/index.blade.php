@@ -38,9 +38,12 @@
                                 <tr data-expanded="true"> 
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->image }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>
+                                        <img src="{{ asset('images/' . $product->image) }}" alt="" width="50px" height="50px">
+                                    </td>
+                                    <td>{{ $product->brand->name }}</td>
+                                    <td>{{ $product->category->name }}</td>
+
                                     <td>
                                         <div class="row">
                                             <div class="col-md-2">

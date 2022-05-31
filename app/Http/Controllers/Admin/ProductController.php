@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Product_status;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -29,10 +30,10 @@ class ProductController extends Controller
     public function create()
     {
         $this->viewData['brands'] = Brand::orderBy('created_at', 'DESC')->get();
-        $this->viewData1['categories'] = Category::orderBy('created_at', 'DESC')->get();
-        $this->viewData2['product_statuses'] = Product_status::orderBy('created_at', 'DESC')->get();
+        $this->viewData['categories'] = Category::orderBy('created_at', 'DESC')->get();
+        $this->viewData['product_statuses'] = Product_status::orderBy('created_at', 'DESC')->get();
 
-        return view('admin.products.create')->with($this->viewData)->with($this->viewData1)->with($this->viewData2);
+        return view('admin.products.create', $this->viewData);
     }
 
     // store
@@ -52,18 +53,31 @@ class ProductController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $this->viewData['brands'] = Brand::orderBy('created_at', 'DESC')->get();
+        $this->viewData['categories'] = Category::orderBy('created_at', 'DESC')->get();
+        $this->viewData['product_statuses'] = Product_status::orderBy('created_at', 'DESC')->get();
+        $this->viewData['product'] = $product;
+        return view('admin.products.edit', $this->viewData);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        if ($this->productService->update($product, $request->all())) {
+            return back()->with('success', 'Successfully update');
+        }
+
+        return redirect()->back()->with('failed', 'Update failure');
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        if ($this->productService->delete($product)) {
+
+            return redirect()->back()->with('success', 'Delete Successfully');
+        }
+
+        return redirect()->back()->with('failed', 'Delete failed');
     }
 }

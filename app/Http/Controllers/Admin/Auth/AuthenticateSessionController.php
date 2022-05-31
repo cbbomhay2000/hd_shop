@@ -24,7 +24,8 @@ class AuthenticateSessionController extends Controller
     public function store(AdminLoginRequest $request)
     {
         
-        if ($this->adminService->checkAccountAdmin($request)) {
+        if ($this->adminService->checkAccountAdmin($request)) 
+        {
             $request->authenticate();
             $request->session()->regenerate();
     

@@ -25,9 +25,11 @@ class AdminLoginRequest extends FormRequest
 
     public function authenticate()
     {
+
         // $this->ensureIsNotRateLimited();
         if (! Auth::guard('admin')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             // RateLimited::hit($this->throttlekey());
+
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
             ]);

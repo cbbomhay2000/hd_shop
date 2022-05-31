@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\AdminStatus;
 use App\Enums\UserStatus;
 use App\Models\User;
 use App\Services\BaseService;
@@ -49,5 +50,17 @@ class UserService extends BaseService
         }
         
         return true;
+    }
+
+    public function block($user)
+    {
+        if ($user['status'] == AdminStatus::ACTIVE)
+        {
+            return $user->update(['status' => AdminStatus::BLOCK]);
+        }
+        elseif ($user['status'] == AdminStatus::BLOCK) 
+        {
+            return $user->update(['status' => AdminStatus::ACTIVE]);
+        }
     }
 }

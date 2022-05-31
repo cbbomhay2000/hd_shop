@@ -7,13 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
-    <link href="{{ 'css/bootstrap.min.css' }}" rel="stylesheet">
-    <link href="{{ 'css/font-awesome.min.css' }}" rel="stylesheet">
-    <link href="{{ 'css/prettyPhoto.css' }}" rel="stylesheet">
-    <link href="{{ 'css/price-range.css' }}" rel="stylesheet">
-    <link href="{{ 'css/animate.css' }}" rel="stylesheet">
-    <link href="{{ 'css/main.css' }}" rel="stylesheet">
-    <link href="{{ 'css/responsive.css' }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/ijaboCropTool.min.css') }}">
+
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/price-range.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -89,7 +91,11 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                @guest
+                                <li><a href="{{ route('profile') }}"><i class="fa fa-user"></i>Account</a></li>
+                                @else
+                                <li><a href="{{ route('profile') }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
+                                @endguest
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="{{ route('checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a>
                                 </li>
@@ -167,16 +173,18 @@
     <!--/header-->
     <main class="py-1">
         @yield('content')
-    </main>
     @extends('layouts.footer')
-    <script src="{{ 'js/jquery.js' }}"></script>
-    <script src="{{ 'js/bootstrap.min.js' }}"></script>
-    <script src="{{ 'js/jquery.scrollUp.min.js' }}"></script>
-    <script src="{{ 'js/price-range.js' }}"></script>
-    <script src="{{ 'js/jquery.prettyPhoto.js' }}"></script>
-    <script src="{{ 'js/main.js' }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="path/to/ijaboCropTool.min.js"></script> 
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
+    <script src="{{ asset('js/price-range.js') }}"></script>
+    <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
+
 
 </html>

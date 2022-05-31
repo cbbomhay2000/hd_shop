@@ -13,11 +13,25 @@ class AdminRequest extends FormRequest
 
     public function rules(Request $request)
     {
-        dd('sd');
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'name' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users'
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:6',
+                'confirmed'
+            ],
         ];
     }
 }
