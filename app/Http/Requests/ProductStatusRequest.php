@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -14,7 +15,11 @@ class ProductStatusRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => [
+                'required',
+                'string',
+                'max:255'
+            ],
         ];
     }
 }

@@ -18,7 +18,11 @@ class AdminLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => [
+                'required',
+                'string',
+                'email'
+            ],
             'password' => ['required', 'string'],
         ];
     }
@@ -27,7 +31,7 @@ class AdminLoginRequest extends FormRequest
     {
 
         // $this->ensureIsNotRateLimited();
-        if (! Auth::guard('admin')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (!Auth::guard('admin')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             // RateLimited::hit($this->throttlekey());
 
             throw ValidationException::withMessages([
