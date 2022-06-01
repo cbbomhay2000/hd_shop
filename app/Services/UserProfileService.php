@@ -12,4 +12,17 @@ class UserProfileService extends BaseService
     {
         $this->model = $model;
     }
+
+    public function update($request)
+    {
+        $user = auth()->user();
+
+        return $user->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'gender' => $request['gender'],
+            'address' => $request['address']
+        ]);
+    }
 }

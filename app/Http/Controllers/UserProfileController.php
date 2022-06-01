@@ -14,23 +14,18 @@ class UserProfileController extends Controller
         $this->userProfileService = $userProfileService;
     }
 
-    //index
     public function edit()
     {
-        return view('user_profile.profile')->with('user', auth()->user());
+        return view('user_profile.profile');
     }
 
     public function update(Request $request)
     {
-        $user = auth()->user();
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'gender' => $request->gender,
-            'address' => $request->address
-        ]);
-        return redirect()->back()->with('success', 'Update successfully');
+        if ($this->userProfileService->update($request->all())) {
+            return redirect()->back()->with('success', 'Update successfully');
+        }
+
+        return redirect()->back()->with('failed', 'Update failed');
     }
 }
