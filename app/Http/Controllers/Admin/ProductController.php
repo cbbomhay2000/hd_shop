@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
@@ -9,24 +10,21 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Product_status;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
-
 class ProductController extends Controller
 {
     public function __construct(ProductService $productService)
     {
         $this->middleware('admin');
-        
         $this->productService = $productService;
     }
     
     public function index(Request $request)
     {
         $this->viewData['products'] = $this->productService->listProduct($request->search);
+
         return view('admin.products.index', $this->viewData);
     }
 
-    //create
     public function create()
     {
         $this->viewData['brands'] = Brand::orderBy('created_at', 'DESC')->get();
@@ -36,7 +34,6 @@ class ProductController extends Controller
         return view('admin.products.create', $this->viewData);
     }
 
-    // store
     public function store(ProductRequest $request)
     {
         if ($this->productService->create($request->all())) {
@@ -47,18 +44,13 @@ class ProductController extends Controller
       
     }
 
-
-    public function show($id)
-    {
-        //
-    }
-
     public function edit(Product $product)
     {
         $this->viewData['brands'] = Brand::orderBy('created_at', 'DESC')->get();
         $this->viewData['categories'] = Category::orderBy('created_at', 'DESC')->get();
         $this->viewData['product_statuses'] = Product_status::orderBy('created_at', 'DESC')->get();
         $this->viewData['product'] = $product;
+
         return view('admin.products.edit', $this->viewData);
     }
 

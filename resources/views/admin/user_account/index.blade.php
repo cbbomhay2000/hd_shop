@@ -24,7 +24,10 @@
                             <tr>
                                 <th data-breakpoints="xs">ID</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Email</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
                                 <th>Status</th>
                                 <th>
                                     <a class="btn btn-success" href="{{ Route('admin.user-account.create') }}">Add</a>
@@ -36,7 +39,12 @@
                                 <tr data-expanded="true">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->name }}</td>
+                                    <td>
+                                        <img src="{{ asset('images/' . $user->image) }}" alt="" width="50px" height="50px">
+                                    </td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->gender }}</td>
                                     <td>
                                         @if ($user->status == '1')
                                             Block
@@ -61,6 +69,10 @@
                                                         href="{{ route('admin.block_user', $user) }}">Active</a>
                                                 </div>
                                             @endif
+                                            <div class="col-md-2">
+                                                <a class="btn btn-info"
+                                                    href="">Detail</a>
+                                            </div>
                                             <div class="col-md-2">
                                                 <form action="{{ route('admin.user-account.destroy', $user) }}"
                                                     method="POST">

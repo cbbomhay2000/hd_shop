@@ -78,7 +78,7 @@
                                                 <select name="product_status_id" class="form-control custom-select">
                                                     @foreach ($product_statuses as $status)
                                                         <option value="{{ $status->id }}"
-                                                            {{ $status->id == $product->status_id ? 'selected' : ''}}>
+                                                            {{ $status->id == $product->status_id ? 'selected' : '' }}>
                                                             {{ $status->name }}
                                                         </option>
                                                     @endforeach

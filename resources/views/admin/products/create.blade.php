@@ -13,7 +13,8 @@
                             <div class="panel-body">
                                 <div class="form">
                                     <form class="cmxform form-horizontal " id="signupForm" method="POST"
-                                        action="{{ Route('admin.product.store') }}"  enctype="multipart/form-data" novalidate="novalidate">
+                                        action="{{ Route('admin.product.store') }}" enctype="multipart/form-data"
+                                        novalidate="novalidate">
                                         @csrf
 
                                         @include('layouts.notice')

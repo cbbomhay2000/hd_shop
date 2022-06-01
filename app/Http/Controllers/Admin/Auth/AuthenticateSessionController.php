@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
 use App\Providers\RouteServiceProvider;
 use App\Services\AdminService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthenticateSessionController extends Controller
 {

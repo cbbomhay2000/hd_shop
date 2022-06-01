@@ -1,4 +1,5 @@
 @extends('layouts.header')
+
 @section('content')
     <div class="container" id="cart_items">
         <div class="breadcrumbs">

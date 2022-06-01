@@ -21,7 +21,7 @@
                                     <div class="mt-3">
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <div class="col-lg-6">
-                                            <input class="custom-file-input inputfile" type="file" name="image" id="file">
+                                            <input class="custom-file-input" type="file" name="image" id="file">
                                         </div>
                                     </div>
                                 </div>
@@ -165,8 +165,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script> 
-    
-    
     <script>
         $('#file').ijaboCropTool({
            preview : '.image-previewer',
@@ -195,7 +193,6 @@
     .image-previewer {
   border-radius: 50%;
 }
-
     .card {
         position: relative;
         display: flex;
@@ -240,13 +237,4 @@
     .shadow-none {
         box-shadow: none !important;
     }
-    .inputfile {
-	width: 70px;
-	height: 50px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
 </style>

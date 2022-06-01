@@ -31,7 +31,6 @@ class UploadController extends Controller
         }
     }
 
-
     // function crop(Request $request){
     //     $path = 'images/';
     //     $file = $request->file('file');
