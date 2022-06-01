@@ -28,10 +28,9 @@ Route::get('/details', function () {
 Route::get('/admin/login', function () {
     return view('admin.login');
 })->name('adminlogin');
+
 Route::get('user/profile', [App\Http\Controllers\UserProfileController::class, 'edit'])->name('profile');
 Route::put('user/profile', [App\Http\Controllers\UserProfileController::class, 'update'])->name('update-profile');
-
-
 Route::get('upload',[UploadController::class, 'index']);
 Route::post('crop', [App\Http\Controllers\UploadController::class, 'crop'])->name('crop');
 
@@ -65,7 +64,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resources([
         'product_status' => 'App\Http\Controllers\Admin\ProductStatusController',
     ]);
-
-
-
 });

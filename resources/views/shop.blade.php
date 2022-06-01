@@ -1,4 +1,5 @@
 @extends('layouts.header')
+
 @section('content')
     <div class="container">
         <img src="images/shop/advertisement.jpg" alt="" />
