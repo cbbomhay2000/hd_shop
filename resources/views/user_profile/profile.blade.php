@@ -83,7 +83,7 @@
                                     <div class="col-sm-9 text-secondary">
                                         <input class="form-control-plaintext" id="email" name="email" type="text"
                                             @error('email') is-invalid @enderror value="{{ Auth::user()->email }}"
-                                            required>
+                                            disabled required>
                                     </div>
                                 </div>
                                 <hr>

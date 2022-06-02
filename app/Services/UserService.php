@@ -22,7 +22,11 @@ class UserService extends BaseService
 
     public function update($user, $request)
     {
-        $request['password'] = Hash::make($request['password']);
+        if ($request['password'] != '') {
+            $request['password'] = Hash::make($request['password']);
+        } else {
+            $request['password'] = $user->password;
+        }
         
         return $user->update($request);
     }
