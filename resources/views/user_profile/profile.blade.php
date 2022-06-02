@@ -7,9 +7,7 @@
                 <h2>User Profile</h2>
             </div>
             <div class="row gutters-sm">
-                <form action="{{ route('update-profile') }}" method="POST">
-                    @csrf
-                    @method('PUT')
+               
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body background">
@@ -63,6 +61,9 @@
                             </ul>
                         </div>
                     </div>
+                    <form action="{{ route('update-profile') }}" method="POST">
+                        @csrf
+                        @method('PUT')
                     <div class="col-md-8">
                         <div class="card mb-3">
                             <div class="card-body">
@@ -102,37 +103,7 @@
                                         <h6 class="mb-0">Gender</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        @if (Auth::user()->gender == 'male')
-                                            <label class="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio"
-                                                    name="gender" value="male" checked><span class="radio-fake"></span>
-                                                <span class="label">Male
-                                                </span></label>
-                                        @else
-                                            <label class="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio"
-                                                    name="gender" value="male"><span class="radio-fake"></span>
-                                                <span class="label">Male
-                                                </span></label>
-                                        @endif
-                                        @if (Auth::user()->gender == 'female')
-                                            <label class="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio"
-                                                    name="gender" value="female" checked><span
-                                                    class="radio-fake"></span><span
-                                                    class="label">Female</span></label>
-                                        @else
-                                            <label class="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio"
-                                                    name="gender" value="female"><span class="radio-fake"></span><span
-                                                    class="label">Female</span></label>
-                                        @endif
-                                        @if (Auth::user()->gender == 'other')
-                                            <label class="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio"
-                                                    name="gender" value="other" checked><span
-                                                    class="radio-fake"></span><span
-                                                    class="label">Other</span></label>
-                                        @else
-                                            <label class="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio"
-                                                    name="gender" value="other"><span class="radio-fake"></span><span
-                                                    class="label">Other</span></label>
-                                        @endif
+                                        {!! getSexUserText(Auth::user()->gender) !!}
                                     </div>
                                 </div>
                                 <hr>

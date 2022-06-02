@@ -16,13 +16,6 @@ class UserProfileService extends BaseService
     public function update($request)
     {
         $user = auth()->user();
-
-        return $user->update([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'phone' => $request['phone'],
-            'gender' => $request['gender'],
-            'address' => $request['address']
-        ]);
+        return $user->update($request);
     }
 }

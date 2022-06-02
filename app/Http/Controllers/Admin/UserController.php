@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Services\UserService;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,7 +18,8 @@ class UserController extends Controller
     }
 
     public function index(Request $request)
-    {
+    { 
+        $this->viewData['adminAccount'] = Auth::guard('admin')->user();
         $this->viewData['users'] = $this->userService->listUser($request->search);
         return view('admin.user_account.index', $this->viewData);
     }
