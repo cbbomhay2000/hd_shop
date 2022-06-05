@@ -34,7 +34,7 @@ Route::put('user/profile', [App\Http\Controllers\UserProfileController::class, '
 Route::get('upload', [UploadController::class, 'index']);
 Route::post('crop', [App\Http\Controllers\UploadController::class, 'crop'])->name('crop');
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
+// Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::namespace('Auth')->middleware('guest:admin')->group(function () {
             //login route
@@ -66,4 +66,4 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'product_status' => 'App\Http\Controllers\Admin\ProductStatusController',
         ]);
     });
-});
+// });
