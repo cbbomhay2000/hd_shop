@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Services\UserService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,20 +17,18 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    //index
     public function index(Request $request)
-    {
+    { 
+        $this->viewData['adminAccount'] = Auth::guard('admin')->user();
         $this->viewData['users'] = $this->userService->listUser($request->search);
         return view('admin.user_account.index', $this->viewData);
     }
 
-    //create
     public function create()
     {
         return view('admin.user_account.create');
     }
 
-    // store
     public function store(UserRequest $request)
     {
         if ($this->userService->create($request->all())) {
@@ -40,12 +39,6 @@ class UserController extends Controller
       
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    // edit
     public function edit(User $user_account)
     {
         $this->viewData['user'] = $user_account;
@@ -53,7 +46,6 @@ class UserController extends Controller
         return view('admin.user_account.edit', $this->viewData);
     }
 
-    //update
     public function update(UserRequest $request, User $user_account)
     {
         if ($this->userService->update($user_account, $request->all())) {
@@ -63,7 +55,6 @@ class UserController extends Controller
         return redirect()->back()->with('failed', 'Update failed');
     }
 
-    // destroy
     public function destroy(User $user_account)
     {
         if ($this->userService->delete($user_account)) {
@@ -71,5 +62,21 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('failed', 'Delete failed');
+    }
+
+    public function block(Request $request, User $user_account)
+    {
+        if ($this->userService->block($user_account, $request->all())) {
+            return redirect()->back()->with('success', 'Lock up Successfully');
+        }
+
+        return redirect()->back()->with('failed', 'Lock up failed');
+    }
+
+    public function show($user)
+    {
+        $users = User::find($user);
+        
+        return view('user_account.show')->with(compact('users'));
     }
 }

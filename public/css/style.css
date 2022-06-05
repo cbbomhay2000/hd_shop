@@ -772,7 +772,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     font-size: 18px;
     font-weight: 400;
     padding: 0 16px;
-    background:#ddede0;
+    background: #a9ddb3;
    border-top-right-radius: 2px;
    border-top-left-radius: 2px; 
     text-transform: uppercase;
@@ -780,6 +780,10 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .panel {
     border: none ! important;
+}
+.control-label .form-group {
+    display: inline-block;
+        vertical-align: middle;
 }
 .agileinfo-grap {
     padding: 2em;
@@ -1628,7 +1632,7 @@ ul.bs-glyphicons-list {
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .form-w3layouts{
-	background: #eef9f0;
+    background: #d9e3db;
     padding: 2em;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -3133,4 +3137,5 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 .chart_agile_bottom {
     padding: 0;
 }
+
 }

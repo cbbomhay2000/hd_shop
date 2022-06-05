@@ -1,4 +1,5 @@
 @extends('admin.app')
+@section('title', 'Admin Account')
 
 @section('content')
     <div id="main-content">
@@ -19,7 +20,7 @@
                 </div>
                 @include('layouts.notice')
                 <div>
-                    <table class="table" ui-jq="footable" >
+                    <table class="table" ui-jq="footable">
                         <thead>
                             <tr>
                                 <th data-breakpoints="xs">ID</th>
@@ -38,19 +39,32 @@
                                     <td>{{ $admin->name }}</td>
                                     <td>{{ $admin->email }}</td>
                                     <td>
-                                        @if ( $admin->status == '1') 
-                                        Block
-                                        @else 
-                                        Active
-                                        @endif</td>
+                                        @if ($admin->status === 1)
+                                            Block
+                                        @else
+                                            Active
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <a class="btn btn-primary"
                                                     href="{{ route('admin.admin-account.edit', $admin) }}">Edit</a>
                                             </div>
+                                            @if ($admin->status === 2)
+                                                <div class="col-md-2">
+                                                    <a class="btn btn-warning"
+                                                        href="{{ route('admin.block', $admin) }}">Block</a>
+                                                </div>
+                                            @else
+                                                <div class="col-md-2">
+                                                    <a class="btn btn-success"
+                                                        href="{{ route('admin.block', $admin) }}">Active</a>
+                                                </div>
+                                            @endif
                                             <div class="col-md-2">
-                                                <form action="{{ route('admin.admin-account.destroy', $admin) }}" method="POST">
+                                                <form action="{{ route('admin.admin-account.destroy', $admin) }}"
+                                                    method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <input class="btn btn-danger" type="submit" value="Delete" />

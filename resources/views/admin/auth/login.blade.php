@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <head>
     <title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Login :: w3layouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+    <meta name="keywords"
+        content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
             Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript">
         addEventListener("load", function() {
@@ -29,10 +31,15 @@
     <div class="log-w3">
         <div class="w3layouts-main">
             <h2>Sign In Now</h2>
+
+            @include('layouts.notice')
+
             <form method="POST" action="{{ route('admin.adminlogin') }}">
                 @csrf
                 <input type="email" class="ggg" name="email" placeholder="E-MAIL" required="">
-                <input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
+                <input type="password" class="ggg" name="password" placeholder="PASSWORD"
+                    @error('password') is-invalid @enderror >
+       
                 <span><input type="checkbox" />Remember Me</span>
                 <div class="clearfix"></div>
                 <input type="submit" value="Sign In" name="login">

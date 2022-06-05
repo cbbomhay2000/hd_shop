@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('brand_id');
             $table->integer('category_id');
-            $table->integer('employee_id');
             $table->integer('product_status_id');
             $table->timestamps();
         });

@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Services\BaseService;
-use Illuminate\Support\Facades\Hash;
 
 class CategoryService extends BaseService
 {

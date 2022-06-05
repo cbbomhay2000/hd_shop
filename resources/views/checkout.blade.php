@@ -236,4 +236,3 @@
             </div>
     </div>
 @endsection <!--/#cart_items-->
-

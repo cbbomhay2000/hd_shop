@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="images/2.png">
-                <span class="username"></span>
+                <span class="username"> {{ Auth::guard('admin')->user()->name }}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
@@ -80,6 +80,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="{{ Route('admin.brands.index') }}">
                         <i class="fa fa-bullhorn"></i>
                         <span>Brands</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ Route('admin.product.index') }}">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ Route('admin.product_status.index') }}">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Product status</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -169,6 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- morris JavaScript -->	
 
 <!-- calendar -->
+    @stack('scripts')
 	<script type="text/javascript" src="{{ asset('js/monthly.js') }}"></script>
 	<script type="text/javascript">
 		$(window).load( function() {
