@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
-<link rel="stylesheet" href="{{ asset('css/ijaboCropTool.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/ijaboCropTool.min.css') }}">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
@@ -176,7 +176,7 @@
     </main>
     @include('layouts.footer')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="path/to/ijaboCropTool.min.js"></script> 
+    <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Models\Admin;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,7 +37,6 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('failed', 'Add new failure');
-      
     }
 
     public function edit(User $user_account)
@@ -46,7 +46,14 @@ class UserController extends Controller
         return view('admin.user_account.edit', $this->viewData);
     }
 
-    public function update(UserRequest $request, User $user_account)
+    public function show($user)
+    {
+        $user = User::find($user);
+
+        return view('admin.user_account.show')->with(compact('user'));
+    }
+
+    public function update(Request $request, User $user_account)
     {
         if ($this->userService->update($user_account, $request->all())) {
             return redirect()->back()->with('success', 'Update successfully');
@@ -70,13 +77,24 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Lock up Successfully');
         }
 
-        return redirect()->back()->with('failed', 'Lock up failed');
+        return redirect()->back()->with('failed', 'Lock  up failed');
     }
 
-    public function show($user)
+    function image(Request $request,User $user_account)
     {
-        $users = User::find($user);
-        
-        return view('user_account.show')->with(compact('users'));
+        $path = 'images/';
+        $file = $request->file('images');
+        $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
+        $upload = $file->move(public_path($path), $new_image_name);
+        if ($upload) {
+            $userphoto = $user_account->image;
+            if ($userphoto != '') {
+                unlink($path.$userphoto);
+            }
+            $user_account->update(['image' => $new_image_name]);
+            return response()->json(['status' => 1, 'msg' => 'Image has been cropped successfully.', 'name' => $new_image_name]);
+        } else {
+            return response()->json(['status' => 0, 'msg' => 'Something went wrong, try again later']);
+        }
     }
 }

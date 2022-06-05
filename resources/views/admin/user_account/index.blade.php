@@ -12,9 +12,13 @@
                                     value="{{ request() ? request()->search : '' }}" placeholder="Enter Country Name">
                             </form>
                         </div>
-                        <div class="col-md-7">
+                        
+                        <div class="col-md-9">
                             User Account
                         </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-success" href="{{ Route('admin.user-account.create') }}">Add</a>
+                            </div>
                     </div>
                 </div>
                 @include('layouts.notice')
@@ -30,7 +34,6 @@
                                 <th>Gender</th>
                                 <th>Status</th>
                                 <th>
-                                    <a class="btn btn-success" href="{{ Route('admin.user-account.create') }}">Add</a>
                                 </th>
                             </tr>
                         </thead>
@@ -54,10 +57,6 @@
                                     </td>
                                     <td>
                                         <div class="row">
-                                            <div class="col-md-2">
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('admin.user-account.edit', $user) }}">Edit</a>
-                                            </div>
                                             @if ($user->status === 2)
                                                 <div class="col-md-2">
                                                     <a class="btn btn-warning"
@@ -71,7 +70,7 @@
                                             @endif
                                             <div class="col-md-2">
                                                 <a class="btn btn-info"
-                                                    href="">Detail</a>
+                                                    href="{{ route('admin.show', $user) }}">Detail</a>
                                             </div>
                                             <div class="col-md-2">
                                                 <form action="{{ route('admin.user-account.destroy', $user) }}"
