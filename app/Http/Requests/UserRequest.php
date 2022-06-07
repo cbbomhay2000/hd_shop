@@ -33,6 +33,7 @@ class UserRequest extends FormRequest
                 'min:6',
                 'confirmed'
             ],
+
         ];
     }
 }

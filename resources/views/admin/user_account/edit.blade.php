@@ -1,4 +1,5 @@
 @extends('admin.app')
+
 @section('content')
     <div id="main-content">
         <section class="wrapper">
@@ -9,11 +10,6 @@
                         <section class="panel">
                             <header class="panel-heading">
                                 Update User Account
-                                <span class="tools pull-right">
-                                    <a class="fa fa-chevron-down" href="javascript:;"></a>
-                                    <a class="fa fa-cog" href="javascript:;"></a>
-                                    <a class="fa fa-times" href="javascript:;"></a>
-                                </span>
                             </header>
                             <div class="panel-body">
                                 <div class="form">
@@ -54,6 +50,18 @@
                                                 <option value="2">Active</option>
                                                 <option value="1">Block</option>
                                               </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="email" class="control-label col-lg-3">Email</label>
+                                            <div class="col-lg-6">
+                                                <input class="form-control " id="email" name="email" type="email"
+                                                    value="{{ $user->email }}">
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group ">

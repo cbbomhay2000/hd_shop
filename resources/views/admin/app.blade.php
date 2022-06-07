@@ -7,6 +7,8 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
+<link rel="stylesheet" href="{{ asset('css/ijaboCropTool.min.css') }}">
+
 <link href="{{ asset('css/style.css') }}" rel='stylesheet' type='text/css' />
 <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet"/>
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -171,6 +173,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @yield('content')
 </main>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <script src="{{ asset('js/jquery.dcjqaccordion.2.7.js') }}"></script>
 <script src="{{ asset('js/scripts.js') }}"></script>
