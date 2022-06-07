@@ -42,13 +42,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </li> --}}
         <!-- user login dropdown start-->
         <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="images/2.png">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                <img alt="" src="{{ asset('images/' . Auth::guard('admin')->user()->image)}}">
                 <span class="username"> {{ Auth::guard('admin')->user()->name }}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                <li><a href="{{ route('admin.profile') }}"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                 <li><a href="{{ Route('admin.destroy')}}"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
