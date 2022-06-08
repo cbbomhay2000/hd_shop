@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UploadController extends Controller
 {
@@ -16,15 +17,38 @@ class UploadController extends Controller
         $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
         $upload = $file->move(public_path($path), $new_image_name);
         if ($upload) {
-            $user = auth()->user();
+            $user = Auth::user();
             $userphoto = $user->image;
             if ($userphoto != '') {
-                unlink($path.$userphoto);
+                unlink($path . $userphoto);
             }
             $user->update([
                 'image' => $new_image_name,
 
             ]);
+            return response()->json(['status' => 1, 'msg' => 'Image has been cropped successfully.', 'name' => $new_image_name]);
+        } else {
+            return response()->json(['status' => 0, 'msg' => 'Something went wrong, try again later']);
+        }
+    }
+
+    function crop2(Request $request)
+    {
+        $path = 'images/';
+        $file = $request->file('image');
+        $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
+        $upload = $file->move(public_path($path), $new_image_name);
+        if ($upload) {
+            $user = Auth::guard('admin')->user();
+            $userphoto = $user->image;
+            if ($userphoto != '') {
+                unlink($path . $userphoto);
+            }
+            $user->update([
+                'image' => $new_image_name,
+
+            ]);
+
             return response()->json(['status' => 1, 'msg' => 'Image has been cropped successfully.', 'name' => $new_image_name]);
         } else {
             return response()->json(['status' => 0, 'msg' => 'Something went wrong, try again later']);

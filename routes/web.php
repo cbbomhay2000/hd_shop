@@ -67,4 +67,7 @@ Route::post('image', [App\Http\Controllers\Admin\UserController::class, 'image']
     Route::resources([
         'product_status' => 'App\Http\Controllers\Admin\ProductStatusController',
     ]);
+    Route::get('user/profile', [App\Http\Controllers\AdminProfileController::class, 'edit'])->name('profile');
+    Route::put('user/profile', [App\Http\Controllers\AdminProfileController::class, 'update'])->name('update-profile');
+    Route::post('crop2', [App\Http\Controllers\UploadController::class, 'crop2'])->name('crop2');
 });
