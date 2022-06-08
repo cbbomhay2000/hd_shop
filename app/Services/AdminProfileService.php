@@ -17,6 +17,11 @@ class AdminProfileService extends BaseService
     public function update($request)
     {
         $admin = Auth::guard('admin')->user();
-        return $admin->update($request);
+        return $admin->update([
+            'name' => $request['name'],
+            'phone' => $request['phone'],
+            'gender' => $request['gender'],
+            'address' => $request['address'],
+        ]);
     }
 }

@@ -48,7 +48,7 @@
                                         <div class="col-sm-9 text-secondary">
                                             <input class="form-control-plaintext" id="email" name="email" type="text"
                                                 @error('email') is-invalid @enderror
-                                                value="{{ Auth::guard('admin')->user()->email }}" required>
+                                                value="{{ Auth::guard('admin')->user()->email }}" disabled required>
                                         </div>
                                     </div>
                                     <hr>
@@ -58,6 +58,7 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input class="form-control-plaintext" id="phone" name="phone" type="number"
+                                                @error('phone') is-invalid @enderror
                                                 value="{{ Auth::guard('admin')->user()->phone }}">
                                         </div>
                                     </div>
@@ -67,7 +68,7 @@
                                             <h6 class="mb-0">Gender</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            {{-- {!! getSexUserText(Auth::user()->gender) !!} --}}
+                                            {!! getSexAdminText(Auth::guard('admin')->user()->gender) !!}
                                         </div>
                                     </div>
                                     <hr>
@@ -118,9 +119,11 @@
     .card {
         box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
     }
+
     .image-previewer {
         border-radius: 50%;
     }
+
     .card {
         position: relative;
         display: flex;
@@ -132,6 +135,7 @@
         border: 1px solid rgba(58, 58, 58, 0.125);
         border-radius: .25rem;
     }
+
     .background {
         background: rgb(244, 241, 241);
     }

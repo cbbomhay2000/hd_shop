@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateAdminRequest;
 use App\Services\AdminProfileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,8 @@ class AdminProfileController extends Controller
         return view('admin.admin_profile.profile');
     }
 
-    public function update(Request $request)
+    public function update(UpdateAdminRequest $request)
     {
-
         if ($this->adminProfileService->update($request->all())) {
             return redirect()->back()->with('success', 'Update successfully');
         }
