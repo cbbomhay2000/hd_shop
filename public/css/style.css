@@ -3170,3 +3170,8 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
   .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
+
+  .btn {
+      margin-left: 20px;
+      margin-right: 20px;
+  }

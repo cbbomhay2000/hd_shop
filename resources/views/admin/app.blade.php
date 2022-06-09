@@ -91,6 +91,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                 </li>
                 <li>
+                    <a href="{{ Route('admin.shop_item.index') }}">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Shop Items</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ Route('admin.product_status.index') }}">
                         <i class="fa fa-bullhorn"></i>
                         <span>Product status</span>
