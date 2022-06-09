@@ -65,6 +65,9 @@ Route::post('image', [App\Http\Controllers\Admin\UserController::class, 'image']
         'product' => 'App\Http\Controllers\Admin\ProductController',
     ]);
     Route::resources([
+        'shop_item' => 'App\Http\Controllers\Admin\ShopItemController',
+    ]);
+    Route::resources([
         'product_status' => 'App\Http\Controllers\Admin\ProductStatusController',
     ]);
     Route::get('user/profile', [App\Http\Controllers\AdminProfileController::class, 'edit'])->name('profile');
