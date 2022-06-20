@@ -180,6 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <script src="{{ asset('js/jquery.dcjqaccordion.2.7.js') }}"></script>
@@ -222,6 +223,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		});
 	</script>
+    <script>
+        $(document).ready(funtion)(){
+            $('#tab').on('click',function(){
+                var id = $(this).data('id');
+                shows(id);
+            alert('chay roi');
+                function shows(id){
+                    ajax({
+                    url: "views/ajax.php",
+                    method: "POST",
+                    success:function(data){
+                        $('#load_data').html(data);
+                        shows();
+                    }
+                })
+                }
+            })
+        }
+    </script>
+    
 	<!-- //calendar -->
 </body>
 </html>

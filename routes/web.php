@@ -3,12 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
 Auth::routes();
-
+Route::get('/', [App\Http\Controllers\ViewUserController::class, 'welcome'])->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/cart', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
 
